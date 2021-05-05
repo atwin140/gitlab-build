@@ -1,0 +1,18 @@
+---
+# Prepare systems for install
+
+- hosts: gitlab
+  gather_facts: no
+  
+  tasks:
+
+  - name: Install podman
+    yum:
+      name: podman
+      state: latest
+
+  - name: Start and enable podman
+    systemd:
+      name: podman
+      state: started
+      enabled: yes
